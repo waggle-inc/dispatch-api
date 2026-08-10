@@ -1,6 +1,6 @@
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
-name: CI with custom action
+name: ci-with-custom-action.yaml
 on:
   push:
     branches:

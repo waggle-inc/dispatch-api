@@ -26,3 +26,9 @@ jobs:
         with:
           service: dispatch-api
           environment: staging
+      - name: Run Waggle release notice
+        uses: waggle-inc/waggle-actions@main
+        with:
+          service: dispatch-api
+          environment: staging
+

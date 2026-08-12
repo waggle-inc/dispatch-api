@@ -4,16 +4,12 @@ name: CI with custom action
 on:
   push:
     branches:
-      - "**"
+      - main
 jobs:
   ci-job:
     steps:
-      - name: Configure Git safe directory
-        uses: docker://alpine/git:latest
-        run: |
-          git config --global --add safe.directory /cloudbees/workspace
       - name: checkout
-        uses: https://github.com/cloudbees-io/checkout@v1
+        uses: https://github.com/cloudbees-io/checkout@v2
       - name: Build Go app
         uses: docker://golang:1.20
         run: |
@@ -22,8 +18,3 @@ jobs:
         uses: docker://golang:1.20
         run: |
           go test -v ./...
-      - name: Run Waggle release notice
-        uses: waggle-inc/waggle-actions@main
-        with:
-          service: dispatch-api
-          environment: staging

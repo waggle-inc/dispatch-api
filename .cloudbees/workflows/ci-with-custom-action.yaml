@@ -31,4 +31,3 @@ jobs:
         with:
           service: dispatch-api
           environment: staging
-

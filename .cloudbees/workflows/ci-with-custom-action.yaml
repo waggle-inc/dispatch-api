@@ -22,3 +22,8 @@ jobs:
         uses: docker://golang:1.20
         run: |
           go test -v ./...
+      - name: Run Waggle release notice
+        uses: waggle-inc/waggle-actions@main
+        with:
+          service: dispatch-api
+          environment: staging

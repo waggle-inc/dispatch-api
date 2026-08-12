@@ -5,6 +5,12 @@ on:
   push:
     branches:
       - "**"
+  workflow_dispatch:
+    inputs:
+      yes:
+        type: choice
+        options:
+          - yes
 jobs:
   ci-job:
     steps:

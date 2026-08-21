@@ -22,5 +22,5 @@ jobs:
         uses: waggle-inc/waggle-actions@main
         with:
           service: dispatch-api
-          environment: staging
+          environment: staging 
 

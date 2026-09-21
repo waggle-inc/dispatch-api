@@ -23,6 +23,7 @@ jobs:
     needs: ci-job
     timeout-minutes: 4320
     with:
+      approvers: "mbedford@cloudbees.com"
       instructions: "Please approve deployment to staging environment"
     delegates: cloudbees-io/manual-approval/custom-job.yml@v1
   

@@ -18,9 +18,12 @@ jobs:
         uses: docker://golang:1.20
         run: |
           go test -v ./...
+      - name: Approve Staging Deployment
+        uses: cloudbees-io/wait-for-approval@v1
+        with:
+          message: "Please approve deployment to staging environment"
       - name: Run Waggle release notice
         uses: waggle-inc/waggle-actions@main
         with:
           service: dispatch-api
-          environment: staging 
-
+          environment: staging

@@ -23,3 +23,7 @@ func main() {
 	fmt.Printf("Drivers available: %d\n", drivers)
 	fmt.Printf("Deliveries scheduled: %d\n", AssignDeliveries(drivers))
 }
+// Check automated-inventory-sync feature flag
+if os.Getenv("FEATURE_automated-inventory-sync") == "true" {
+    log.Println("Automated inventory sync enabled")
+}

@@ -1,17 +1,27 @@
 package orders
 
-import (
-    "context"
-)
+  import (
+      "context"
+      "github.com/rollout/rox-go/v5/core"
+  )
 
-// ProcessOrder handles order processing with batch picking support
-func ProcessOrder(ctx context.Context, order *Order) error {
-    // Use batch picking workflow - process multiple orders together
-    return processBatchOrder(ctx, order)
-}
+  var batchPickingMode = core.NewRoxFlag(false)
 
-func processBatchOrder(ctx context.Context, order *Order) error {
-    // Batch picking logic: group with other orders, optimize route
-    // ...
-    return nil
-}
+  func init() {
+      core.Register("", batchPickingMode)
+  }
+
+  func ProcessOrder(ctx context.Context, order *Order) error {
+      if batchPickingMode.IsEnabled(ctx) {
+          return processBatchOrder(ctx, order)
+      }
+      return processSingleOrder(ctx, order)
+  }
+
+  func processBatchOrder(ctx context.Context, order *Order) error {
+      return nil
+  }
+
+  func processSingleOrder(ctx context.Context, order *Order) error {
+      return nil
+  }
